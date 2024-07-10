@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #title{
+           height: 100px;
+           width: 100px;
+           background-color: aqua;
+           position: absolute; 
+        }
+    </style>
+</head>
+<body>
+    <p> Text</p>
+   <div id ="title">
+   </div>
+   <script>
+
+   var st = new Date().getTime(); 
+   function move(){
+     var left = Math.random()*300+"px";
+     var top = Math.random()*300+"px"; 
+     var wh =  ((Math.random()*400)+100)+"px"; 
+    document.getElementById("title").style.left = left;
+    document.getElementById("title").style.top = top;
+    document.getElementById("title").style.width = wh;
+    document.getElementById("title").style.height = wh;
+    document.getElementById("title").style.display ="block";
+    document.getElementById("title").style.backgroundColor=get_random_color();
+    st = new Date().getTime();
+     }
+
+     function get_random_color() 
+    {
+    var color = "";
+    for(var i = 0; i < 3; i++) {
+        var sub = Math.floor(Math.random() * 256).toString(16);
+        color += (sub.length == 1 ? "0" + sub : sub);
+    }
+    return "#" + color;
+    }  
+   move(); 
+    document.getElementById("title").onclick = function(){
+        document.getElementById("title").style.display ="none";
+
+    var et = new Date().getTime();
+    var time = et-st;
+    alert(time);
+   move(); 
+    }
+   </script> 
+</body>
+</html>
